@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registered Users</title>
+</head>
+<body>
+    <h1>List of Registered Users</h1>
+    <table id="userList"  border="1">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Registered users will be inserted here -->
+        </tbody>
+    </table>
+
+    <script>
+        // Retrieve user data from local storage
+        const userData = JSON.parse(localStorage.getItem('userData'));
+
+        // Select the table body element
+        const tableBody = document.querySelector('#userList tbody');
+
+        // Iterate through the user data and add each user as a new row in the table
+        userData.forEach(user => {
+            const row = document.createElement('tr');
+            row.innerHTML = `<td>${user.username}</td><td>${user.email}</td>`;
+            tableBody.appendChild(row);
+        });
+    </script>
+</body>
+</html>
